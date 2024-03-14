@@ -19,66 +19,132 @@
 				<section>
 					<h2>Quantitative Analysis of Prion Disease Using an AI-Powered Digital Pathology Framework</h>
 					<p><small><a href="https://www.nature.com/articles/s41598-023-44782-4.pdf"><small>pdf</small></a></small></p>
-					<aside class="notes">Welcome! Today, I will guide you through how this study leveraged both machine learning and deep learning techniques and enhanced the accuracy and efficiency of diagnosing prion diseases.</aside>
+					<aside class="notes">Today, I will guide you through how this study leveraged both machine learning and deep learning techniques and enhanced the accuracy and efficiency of diagnosing prion diseases.</aside>
+				</section>
+				<section>
+					<h2>Prion Disease</h2>
+					<p>Prion diseases are a group of rare, transmissible, untreatable, and fatal brain diseases that affect mammals. They are caused by abnormally folded proteins called prions.</p>
+					<aside class="notes">Their cause is highly unusual: The host's normal prion protein can, for unknown reasons, malfunction and assemble into structured aggregates called prions that cause infectious brain disease</aside>
 				</section>
 				<section>
 					<h2>Study Aim</h2>
-					<p>To develop an AI-based framework for the accurate classification of Whole Slide Images (WSIs) as positive or negative for prion disease and quantify prion proteins' distribution across tissue sections.</p>
+					<ul>
+						<li class="fragment">To develop an AI-based framework for the accurate classification of Whole Slide Images (WSIs) as positive or negative for prion disease</li>
+						<li class="fragment">To quantify prion proteins distribution across tissue sections</li>
+					</ul>
 					<aside class="notes">The primary goal of the study is to leverage AI to improve the diagnostic process for prion diseases, potentially extending this methodology to other neurodegenerative disorders.</aside>
 				</section>
 				<section>
 					<section>
 						<h2>Dataset Overview</h2>
-						<p class="fragment">Source: Piedmont Reference Center for Diagnosis and Monitoring of Prion Diseases (DOMP)</p>
+						<p class="fragment">Slides were obtained from Piedmont Reference Center for Diagnosis and Monitoring of Prion Diseases (DOMP) ( 2002 - 2008 )</p>
 					</section>
 					
 					<section>
+						<div class="container" >
+							
+							<img class="col" src=".\public\images\pos-neg.png" alt="pos-neg WSIs" height="500" width="500">
+
+							<ul class="col">
+								<li class="fragment"> Scanners used
+									<ul>
+										<li >Ventana DP200</li>
+										<li >Aperio T2</li>
+									</ul>
+								</li>
+								<li class="fragment">41 patients, 64 slides obtained post mortem</li>
+								<li class="fragment">from cerebellum(36) and occipital lobe(28)</li>
+							</ul>
+						</div>
+						<aside class="notes" ></aside>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Feature Extraction & Machine Learning Methods</h2>
 						<ul>
-							<li class="fragment">41 patients</li>
-							<li class="fragment">WSIs from cerebellum and occipital lobe</li>
-							<li class="fragment">Collected between 2002 and 2008</li>
+							<li>Texture Analysis</li>
+							<li>Use of UPerNet for multi-scale feature extraction combined with the TWINS architecture</li>
+							<li>Classifiers: K-Nearest Neighbors (KNN), Support Vector Machine (SVM), Random Forest (RF), and Artificial Neural Network (ANN)</li>
 						</ul>
-						<img src=".\public\images\pos-neg.png" alt="" height="500" width="500">
 					</section>
 					<section>
+						<div class="container">
+							<img class="col" src=".\public\images\rgb-grayscale-deltae.png" alt="RGB, Grayscale, and DeltaE images comparison" >
+
+						<aside class="notes">
+						  This slide presents the initial step in feature extraction, displaying RGB, Grayscale, and DeltaE images. Notably, the DeltaE image is advantageous because it accentuates the red staining of prion proteins, which is crucial for identifying the presence of prions in the tissue samples.
+						</aside>
+						</div>
+					</section>
+					<section>
+						<h2>Texture Analysis</h2>
 						
 					</section>
-					<aside class="notes">The dataset was obtained from the Piedmont Reference Center for Diagnosis and Monitoring of Prion Diseases (DOMP). It includes WSIs from the cerebellum and occipital lobe of 41 patients, collected between 2002 and 2008. The immunohistochemistry staining with the 12F10 antibody highlights protein aggregates in red.</aside>
+					<section>
+						<h2>DeltaE</h2>
+						<div class="container">
+							<img src=".\public\images\deltae.png" alt="DeltaE image" height="500" width="500">
+							<ul>
+
+								<li class="fragment">DeltaE represents the difference between two colors</li>
+								<li class="fragment">Useful for emphasizing the differences in staining</li>
+								
+							</ul>
+						</div>
+						<aside class="notes">
+						  This slide explains the L,a,b color space, which is crucial for the DeltaE calculation. DeltaE represents the difference between two colors, which is particularly useful in this study for emphasizing the differences in staining, a critical factor for identifying prion protein aggregates.
+						</aside>
+					</section>
+
+					
+					<aside class="notes">We implemented sophisticated feature extraction, utilizing texture analysis and advanced architectures like UPerNet and TWINS for deep learning. This facilitated the use of traditional machine learning classifiers and deep neural networks to analyze the images in detail.</aside>
 				</section>
-				<section>
-					<h2>Dataset Used</h2>
-					<p>Details about the dataset from DOMP, including the scanners used and sample information.</p>
-				</section>
-				<section>
-					<h2>Machine Learning System Input</h2>
-					<p>Type of data used and its processing.</p>
-				</section>
+				
 				<section>
 					<h2>System Output</h2>
-					<p>Describes the output labels and the quantification of PrPSc distribution.</p>
+					<ul>
+						<li>Binary classification of WSIs as positive or negative for prion disease</li>
+						<li>Detailed segmentation maps highlighting PrPSc aggregates</li>
+					</ul>
+					<aside class="notes">The output from our AI system includes a binary classification of disease presence and segmentation maps that provide insights into prion protein distribution within the tissue.</aside>
 				</section>
+				
 				<section>
-					<h2>Results - Performance</h2>
-					<p>Comparison between machine learning and deep learning strategies and their efficiencies.</p>
+					<h2>Results & Performance</h2>
+					<ul>
+						<li>High accuracy in blind test sets, with deep learning outperforming machine learning</li>
+						<li>Significant improvement in analysis speed, up to 700% efficiency increase</li>
+						<li>Successful quantification of PrPSc distribution across tissue sections</li>
+					</ul>
+					<aside class="notes">Our results show that the deep learning model offered superior accuracy and efficiency compared to traditional machine learning methods. This marks a significant advancement in digital pathology for prion diseases.</aside>
 				</section>
+				
 				<section>
-					<h2>Interesting Findings</h2>
-					<p>Discussion on new image processing approaches and the potential applications.</p>
+					<h2>Conclusion & Future Directions</h2>
+					<ul>
+						<li>AI significantly enhances the accuracy and speed of prion disease diagnosis</li>
+						<li>Potential application to other neurodegenerative diseases</li>
+						<li>Future work will aim to expand dataset variability and explore further diseases</li>
+					</ul>
+					<aside class="notes">In conclusion, our study demonstrates the potential of AI in revolutionizing the diagnosis of prion diseases, with promising avenues for future research in broader neurodegenerative disease diagnostics.</aside>
 				</section>
+				
 				<section>
-					<h2>Discussion and Implications</h2>
-					<p>Significance of AI in pathology and challenges faced during the study.</p>
-				</section>
-				<section>
-					<h2>Conclusion and Future Work</h2>
-					<p>Summary of contributions and directions for future research.</p>
-				</section>
-				<section>
-					<h2>Q&A</h2>
-					<p>Invite questions from the audience.</p>
+					<h2>Thank You!</h2>
+					<p>Questions?</p>
+					<aside class="notes">Thank you for your attention! I'm ready to answer any questions you may have.</aside>
 				</section>
 			</div>
 		</div>
+		<style>
+			.container{
+				display: flex;
+			}
+			.col{
+				flex: 1;
+			}
+		</style>
 
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
